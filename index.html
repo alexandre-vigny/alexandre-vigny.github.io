@@ -1,3 +1,208 @@
+<?php
+
+$imgPerso ="";
+
+$url_acces= "https://www.imj-prg.fr/spip.php?rubrique13";
+$divers= ' ';
+
+		$champ_titre=2;
+		$champ_nom=6;
+		$champ_prenom=10;
+		$champ_present=38;
+		$champ_type = 48;
+		$champ_statut = 50;
+		$champ_situation = 52;
+
+		$implan_email=0;
+		$implan_tel=1;
+		$implan_bureau=2;
+		$implan_etat=3;
+		$implan_raison_prolongation=4;
+
+		$these_intitule = 0;
+		$these_directeur = 1;
+		$these_date_soutenance =2;
+		$these_etat = 3;
+
+$adresse = "Bureau 7049, bâtiment Sophie Germain 8 place Aurélie Nemours 75013 Paris<br><br>";
+
+// *****************************************************
+
+
+$nom_fichier_base="https://www.imj-prg.fr/membres/";
+$nom_fichier_personnel= $nom_fichier_base.'Export-personnel.csv';
+$nom_fichier_ratachement= $nom_fichier_base.'Export-ratachement.csv';
+$nom_fichier_implantation= $nom_fichier_base.'Export-implantation.csv';
+$nom_fichier_these= $nom_fichier_base.'Export-these.csv';
+$nom_fichier_carriere= $nom_fichier_base.'Export-carriere.csv';
+
+
+$url =  explode ('/', $_SERVER['REQUEST_URI']);
+
+$email_debut=str_replace('~','', $url[1]);
+
+
+
+$rep= explode('.',$email_debut);
+
+$prenom= ucfirst($rep[0]);
+$nom= ucfirst($rep[1]);
+$poste='';
+$equipe='';
+$tel='';
+$lieu='';
+$adresse='';
+
+$streamContext = stream_context_create([
+    'ssl' => [
+        'verify_peer'      => false,
+        'verify_peer_name' => false
+        ]
+    ]);
+$organisme='';
+$grade='';
+if (($handle = fopen($nom_fichier_personnel, "r",false, $streamContext)) !== FALSE) {
+
+	while (($ligne = fgetcsv($handle, 1000, ";")) !== FALSE) {
+		$nom_minuscule = strtolower($nom);
+		$prenom_minuscule = strtolower($prenom);
+		if(strtolower($ligne[$champ_nom]) == $nom_minuscule && strtolower(suppr_accents(utf8_encode($ligne[$champ_prenom]),'utf-8')) == $prenom_minuscule ) {
+			// poste
+			$s=explode( ' - ' ,$ligne[$champ_type]  ) ;
+
+			if($s[0] =='IT'){
+				$poste='';
+			}else {
+				$poste= utf8_encode($s[1]);
+				 list($organisme, $grade) = recupCarriere($nom_fichier_carriere, strtoupper($nom), strtoupper($prenom), $streamContext);
+			}
+
+			$equipe = recupEquipe($nom_fichier_ratachement, strtoupper($nom_minuscule), strtoupper($prenom_minuscule), $streamContext);
+			list($email,$tel,$adresse) = recupImplantation($nom_fichier_implantation, strtoupper($nom), strtoupper($prenom), $streamContext);
+
+			break;
+		}
+
+
+
+	}
+}
+
+
+$adr =explode('/', $adresse);
+if(  strtolower(trim($adr[0]))== 'jussieu'){
+	$adr[0] = "4 place Jussieu,<br>Boite Courrier 247<br>75252 Paris Cedex 5<br>";
+}
+if(  strtolower(trim($adr[0]))== 'sophie germain'){
+	$adr[0] = "UP7D - Campus des Grands Moulins<br>Boite Courrier 7012<br>Bâtiment Sophie Germain<br>8 Place Aurélie Nemours,<br>- 75205 PARIS Cedex 13<br>";
+	}
+if(!isset($adr[1])){
+	$adr[1]='';
+}
+$adresse ="Bureau 7049, bâtiment Sophie Germain 8 place Aurélie Nemours 75013 Paris<br><br>";
+$web = "http://webusers.imj-prg.fr/~$email_debut/";
+
+$poste= "Doctorant dans l'équipe de Logique<br> Sujet : Énumération de requêtes et graphes Nowhere-Dense<br>";
+
+
+
+
+
+
+
+
+$code_acces = '<p><a class="btn btn-default" href="'.$url_acces.'" role="button">Accès</a></p>';
+
+$email='<script type="text/javascript">
+<!--
+var tg="<";
+var nom="' . $email_debut.'";
+var arob="@";
+
+var hote1="imj";
+var hote2="-prg.fr";
+
+document.write(tg+"a hr"+"ef=mai"+"lto:"+nom);
+document.write(arob+hote1+hote2+">"+nom+arob+hote1+hote2+tg+"/a>");
+-->
+</script>
+';
+
+
+
+	//********************************************
+	function recupEquipe($fichierAnnuaireRatach, $nom, $prenom, $streamContext){
+		$champ_equipe = 6;
+		$champ_nom_ratachement = 12;
+		$champ_prenom_ratachement = 14;
+
+		if (($handleRatach = fopen($fichierAnnuaireRatach, "r",false, $streamContext)) !== FALSE) {
+			while (($ligneRatach= fgetcsv($handleRatach, 1000, ";")) !== FALSE) {
+
+				if((utf8_encode($ligneRatach[$champ_nom_ratachement]) ==$nom) && (strtoupper(suppr_accents(utf8_encode($ligneRatach[$champ_prenom_ratachement]),'utf-8')) == $prenom)){
+					$e=explode( '-' ,$ligneRatach[$champ_equipe]  ) ;
+					fclose($handleRatach);
+					return array(utf8_encode($e[1]),  $e[0]);
+				}
+			}
+		}
+
+	}
+	//********************************************
+	function recupImplantation($fichierAnnuaireImpl, $nom, $prenom, $streamContext){
+		$champ_nom = 6;
+		$champ_prenom = 8;
+		$champ_email = 30;
+		$champ_tel=32;
+		$champ_bat=36;
+
+		if (($handle = fopen($fichierAnnuaireImpl, "r",false, $streamContext)) !== FALSE) {
+			while (($ligne= fgetcsv($handle, 1000, ";")) !== FALSE) {
+				if((strtoupper(utf8_encode($ligne[$champ_nom])) == $nom) && (strtoupper(suppr_accents(utf8_encode($ligne[$champ_prenom]),'utf-8')) == $prenom)){
+					$implantation = array($ligne[$champ_email], $ligne[$champ_tel], $ligne[$champ_bat]);
+					fclose($handle);
+					return $implantation ;
+				}
+			}
+		}
+
+	}
+		//********************************************
+	function recupCarriere($fichierAnnuaireCarriere, $nom, $prenom, $streamContext){
+		$champ_nom = 6;
+		$champ_prenom = 8;
+		$champ_organisme = 22;
+		$champ_type_poste = 28;
+
+		if (($handle = fopen($fichierAnnuaireCarriere, "r",false, $streamContext)) !== FALSE) {
+			while (($ligne= fgetcsv($handle, 1000, ";")) !== FALSE) {
+				if((strtoupper(utf8_encode($ligne[$champ_nom])) == $nom) && (strtoupper(suppr_accents(utf8_encode($ligne[$champ_prenom]),'utf-8')) == $prenom)){
+					$s  = explode(' - ', $ligne[$champ_organisme]);
+					$typePoste = explode(' - ',  $ligne[$champ_type_poste]);
+					fclose($handle);
+					if($s[1] != "INCONNU"){
+						return  array($s[1],utf8_encode($typePoste[1]));
+					}
+					else {
+						return array('','');
+					}
+				}
+			}
+		}
+
+	}
+		//********************************************
+	 function suppr_accents($str, $encoding='utf-8'){
+
+	$str = htmlentities($str, ENT_NOQUOTES, $encoding);
+	$str = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+	$str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
+	$str = preg_replace('#&[^;]+;#', '', $str);
+
+	return $str;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +214,7 @@
     <link rel="shortcut icon" href="image.ico" type="image/x-icon">
     <title>Alexandre Vigny </title>
 
+    <title><?php echo "$prenom $nom"; ?> </title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://www.imj-prg.fr/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +248,7 @@
 
           </button>
         	<div class="row">
-        		<div class="col-sm-6">   <a class="navbar-brand" href=https://webusers.imj-prg.fr/~alexandre.vigny/> Alexandre Vigny </a></div>
+        		<div class="col-sm-6">   <a class="navbar-brand" href=https://webusers.imj-prg.fr/~alexandre.vigny/> Alexandre Vigny </a>     </div>
           		<div class="col-sm-3">  <a class="navbar-brand" href=https://webusers.imj-prg.fr/~alexandre.vigny/> Français </a> </div>
           		<div class="col-sm-2">  <a class="navbar-brand" href=en.html> English </a> </div>
 
@@ -64,55 +270,71 @@
 			<div class="col-md-7">
 
 				<h1>Alexandre Vigny</h1>
-				<p>I am currently a postdoc at the University of Warsaw, funded by the ERC grant Lipa of
+
+				<p>Je suis actuellement un postdoc à l'Université de Brême, dans l'équipe de <a href="https://www.uni-bremen.de/de/fachbereich-3/theorie/team/"> Sebastian Siebertz</a>.<br>
+					Précédemment j'étais un postdoc à l'Université de Varsovie, financé par l'ERC Lipa de
 					<a href="https://www.mimuw.edu.pl/~bojan/"> Mikołaj Bojańczyk</a>.<br>
-					Before that, I was a PhD student at the University Paris Diderot under the supervision of <a href= "http://www.logique.jussieu.fr/~durand/">
-					Arnaud Durand</a> and <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>.</p>
+					Avant ça, j'étais doctorant à l'Université Paris Diderot sous la direction d' <a href= "http://www.logique.jussieu.fr/~durand/">
+					Arnaud Durand</a> et de <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>.</p>
 					<br><br>
 
 			</div>
 
-			<h2>Past / current positions</h2>
+			<h2>Postes précédents / actuel</h2>
 				<ul>
-					<li> Since October 2018: Postdoc at the University of Warsaw. <br>
-					<li> From October 2015 to September 2018: PhD Student at the IMJ-PRG, in the University Paris Diderot. <br>
-					<li> From May 2015 to September 2015: Internship in the LSV, at the ENS Cachan. <br>
+					<li> Depuis Novembre 2019 : Postdoc à l'Université de Brême. <br>
+					<li> De octobre 2018 à Septembre 2019 : Postdoc à l'Université de Varsovie. <br>
+					<li> De octobre 2015 à septembre 2018 : Doctorant à l'IMJ-PRG, l'Université Paris Diderot. <br>
+					<li> De mai 2015 à septembre 2015 : Stagière au LSV, à l'ENS Cachan. <br>
 				</ul>
 
 
-			<h2> Publications</h2>
+			<h2>Publications</h2>
 			<ul>
+				<li> <a href="https://drops.dagstuhl.de/opus/volltexte/2020/12755/"> Elimination Distance to Bounded Degree on Planar Graphs </a> <br>
+						Avec Alexander Lindermayr et <a href="https://www.uni-bremen.de/ag-theoretische-informatik/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>, présenté à MFCS 2020.<br>
+					Version longue sur <a href ="https://arxiv.org/abs/2007.02413">Arxiv</a>. <a href="https://www.youtube.com/watch?v=oTKueyUsNwY"> Présentation vidéo.</a></li><br>
+
 				<li> <a href="Papers/Schweikardt-Segoufin-Vigny_enum-fo-nowhere-dense_2018.pdf"> Enumeration for FO Queries over Nowhere Dense Graphs </a> <br>
-						With <a href="https://www2.informatik.hu-berlin.de/~schweikn/"> Nicole Schweikardt</a>  and <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>, presented at PODS 2018.</li><br>
+						Avec <a href="https://www2.informatik.hu-berlin.de/~schweikn/"> Nicole Schweikardt</a>  et <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>, présenté à PODS 2018.</li><br>
 				<li> <a href="Papers/Segoufin-Vigny_Local-bounded-expansion_2017.pdf"> Constant Delay Enumeration for FO Queries over
-						Databases with Local Bounded Expansion </a> <br> With <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>, presented at ICDT 2017.</li>
+						Databases with Local Bounded Expansion </a> <br> Avec <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>, présenté à ICDT 2017.</li>
 			</ul>
 
+			<h2>Vulgarisation scientifique</h2>
+			<ul>
+				<li> Article dans le premier numero de la <a href="https://www.gdr-im.fr/gazette/">gazzette</a> du <a href="https://www.gdr-im.fr/">GDR-IM</a>. (PDF <a href="https://www.gdr-im.fr/wp-content/uploads/2020/07/gazette_01.pdf">ici</a>)
+			</ul>
 
-			<h2> My PhD defense!</h2>
-				I defended my PhD on September the 27th. <a href="Papers/these-vigny.pdf">manuscript</a>, <a href="slides/these-vigny.pdf">slides</a>. <br>
-				All the information is <a href="These/defense-en.html">here.</a> <br>
+			<h2>Ma soutenance de thèse !</h2>
+				J'ai soutenu ma thèse le 27 septembre 2018. <a href="Papers/these-vigny.pdf">manuscrit</a>, <a href="slides/these-vigny.pdf">slides</a>. <br>
+				Toutes les informations sont <a href="These/defense.html"> ici.</a> <br>
 
 
-			<h2> Talks </h2>
+			<h2>Communications </h2>
 				<ul>
-					<li> 15/02/2019, Paris, Automata seminar, IRIF. <a href="slides/vigny-irif_2019.pdf"> slides </a> </li>
-					<li> 20/12/2018, Varsovie, Automate seminar, MIMUW. blackboard </li>
-					<li> 05/12/2018, Orsay, LaHDAK seminar, LRI. <a href="slides/vigny-ladhak_2018.pdf"> slides </a> </li>
-					<li> 11/06/2018, Houston, PODS conference. <a href="slides/vigny-pods-2018.pdf"> slides </a> </li>
-					<li> 01/06/2018, Caen, Annual days of ANR AGGREG. <a href="slides/vigny-aggreg-2018.pdf"> slides </a> </li>
-					<li> 15/03/2018, Clermont, seminar, LIMOS. <a href="slides/Vigny-Limos-part1-2018.pdf"> slides part 1 </a> <a href="slides/Vigny-Limos-part2-2018.pdf"> slides part 2 </a></li>
-					<li> 16/11/2017, Nancy, BDA conference.	<a href="slides/vigny-bda-2017.pdf"> slides </a> </li>
-					<li> 15/09/2017, London, Highlights confrence. <a href="slides/vigny-highlights-2017.pdf"> slides </a> </li>
-					<li> 15/06/2017, Lille, Annual days of ANR AGGREG.</li>
-					<li> 21/03/2017, Venice, ICDT conference. <a href="slides/Vigny-ICDT-2017.pdf"> slides </a></li>
-					<li> 06/01/2017, Paris, Automata seminar, IRIF. <a href="slides/Vigny-Automates-2017.pdf"> slides </a> </li>
-					<li> 11/07/2016, Marseille, Annual days of ANR AGGREG.</li>
-					<li> 07/06/2016, Fontainebleau, LSV annual seminar "Barbizon".</li>
+					<li> 26/08/2020, MFCS 2020 (Online) <a href="slides/2020-mfcs.pdf"> slides</a>, <a href="https://www.youtube.com/watch?v=oTKueyUsNwY">vidéo</a></li>
+					<li> 28/10/2019, Berlin, <a href="http://www.facetsofcomplexity.de/monday/20191028-L-Vigny.html">Facets of Complexity</a>.</li>
+					<li> 23/10/2019, Bremen, AG Theory of Artificial Intelligence.</li>
+					<li> 12/04/2019, Lille, Séminaire de Links, CRIStAL.</li>
+					<li> 15/02/2019, Paris, Séminaire Automate, IRIF. <a href="slides/vigny-irif_2019.pdf"> slides </a> </li>
+					<li> 20/12/2018, Varsovie, Séminaire Automate, MIMUW. tableau </li>
+					<li> 05/12/2018, Orsay, Séminaire du LaHDAK, LRI. <a href="slides/vigny-ladhak_2018.pdf"> slides </a> </li>
+					<li> 11/06/2018, Houston, Conférence PODS 2018. <a href="slides/vigny-pods-2018.pdf"> slides </a> </li>
+					<li> 01/06/2018, Caen, Journées annuelles de l'ANR AGGREG. <a href="slides/vigny-aggreg-2018.pdf"> slides </a> </li>
+					<li> 15/03/2018, Clermont, Séminaire du LIMOS. <a href="slides/Vigny-Limos-part1-2018.pdf"> slides part 1 </a> <a href="slides/Vigny-Limos-part2-2018.pdf"> slides part 2 </a></li>
+					<li> 16/11/2017, Nancy, Conférence BDA.	<a href="slides/vigny-bda-2017.pdf"> slides </a> </li>
+					<li> 15/09/2017, Londres, Conférence Highlights 2017. <a href="slides/vigny-highlights-2017.pdf"> slides </a> </li>
+					<li> 15/06/2017, Lille, Journées annuelles de l'ANR AGGREG.</li>
+					<li> 21/03/2017, Venise, Conférence ICDT 2017. <a href="slides/Vigny-ICDT-2017.pdf"> slides </a> </li>
+					<li> 06/01/2017, Paris, Séminaire Automate, IRIF. <a href="slides/Vigny-Automates-2017.pdf"> slides </a> </li>
+					<li> 11/07/2016, Marseille, Journées annuelles de l'ANR AGGREG.</li>
+					<li> 07/06/2016, Fontainebleau, Séminaire annuel du LSV "Barbizon".</li>
 				</ul>
 
 
-			<h2> Teaching (in French) </h2>
+
+			<h2>Enseignements</h2>
 			<ul>
 				<li> 2017-2018</li>
 						<div class="blank" id="blankCI2"></div>
@@ -156,6 +378,7 @@
 									<li> TD10 : <a href="td/2016-2017/bdd_td10.pdf">sujet</a>.</li>
 									<li> TD11 : <a href="td/2016-2017/bdd_td11.pdf">sujet</a>.</li>
 
+
 								</ul>
 								<a href="#blankbd17">[ - ]</a>
 							</div><br><br>
@@ -181,29 +404,7 @@
 							</ul>
 							<a href="#blankLA3">[ - ]</a>
 						</div>
-
-
 			</ul>
-
-
-
-		<!-- 	<h3>Bourbakettes</h3>
-			Séminaire / goûter des doctorants en math et didactique.<br>
-			La page des Bourbakettes <a href="http://vcantoral.wixsite.com/les-bourbakettes">ici</a>.<br>
-			La <a href="mailto:doctorants-prg@imj-prg.fr,
-				sergeant@ens.fr,simple_words91@yahoo.com,
-				aurel.sagnier@wanadoo.fr,lecouturier.emmanuel@gmail.com,
-				zzzhangzhiyuan@gmail.com,esther.elbaz@free.fr,
-				derouet@math.univ-paris-diderot.fr,noe.de.rancourt@ens.fr,
-				robert.sovannarith.thai@gmail.com,ibonez.ibonez@gmail.com,
-				daniel2357111317@gmail.com,jpvigneaux@gmail.com,
-				leonardsanchez@gmail.com,jorge.gaona.p@gmail.com,
-				cosinusoide@gmail.com,zeusalterman@gmail.com,
-				annalaura.stingo@gmail.com,
-				corentin.melin@outlook.fr,elie.casbi@ens.fr,
-				gabriel.lehericy@imj-prg.fr,leonardsanchez@gmail.com,
-				kerjean@irif.fr">mailinglist</a>.
-		-->
 		</div>
 	</div>
 </div>
@@ -213,15 +414,14 @@
 	<div class="row">
 		<div class="col-md-4">
 			<h2>Contact</h2>
-			<p>E-mail: alexandre.vigny@imj-prg.fr<br>
+			<p>E-mail: vigny[at]uni-bremen[dot]de<br>
 				URL: <a href="https://webusers.imj-prg.fr/~alexandre.vigny/">http://webusers.imj-prg.fr/~alexandre.vigny/</a><br>
-        Phone: 0421 21863752<br>
 			</p>
 
 		</div>
 		<div class="col-md-8">
-			<h2>Address</h2>
-				Bureau 7049, bâtiment Sophie Germain, 8 place Aurélie Nemours 75013 Paris.
+			<h2>Adresse</h2>
+				Bureau 3170 MZH, 28359 Brême.
 		</div>
 	</div>
 

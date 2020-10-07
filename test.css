@@ -1,0 +1,19 @@
+.enseignement {
+    display: none;
+}
+.enseignement:target {
+    display: block;
+}
+
+.blank{
+ display: none;
+}
+
+a{
+    color: brown;
+
+}
+
+a:hover {
+    color: red;
+}
