@@ -1,208 +1,3 @@
-<?php
-
-$imgPerso ="";
-
-$url_acces= "https://www.imj-prg.fr/spip.php?rubrique13";
-$divers= ' ';
-
-		$champ_titre=2;
-		$champ_nom=6;
-		$champ_prenom=10;
-		$champ_present=38;
-		$champ_type = 48;
-		$champ_statut = 50;
-		$champ_situation = 52;
-
-		$implan_email=0;
-		$implan_tel=1;
-		$implan_bureau=2;
-		$implan_etat=3;
-		$implan_raison_prolongation=4;
-
-		$these_intitule = 0;
-		$these_directeur = 1;
-		$these_date_soutenance =2;
-		$these_etat = 3;
-
-$adresse = "Bureau 7049, bâtiment Sophie Germain 8 place Aurélie Nemours 75013 Paris<br><br>";
-
-// *****************************************************
-
-
-$nom_fichier_base="https://www.imj-prg.fr/membres/";
-$nom_fichier_personnel= $nom_fichier_base.'Export-personnel.csv';
-$nom_fichier_ratachement= $nom_fichier_base.'Export-ratachement.csv';
-$nom_fichier_implantation= $nom_fichier_base.'Export-implantation.csv';
-$nom_fichier_these= $nom_fichier_base.'Export-these.csv';
-$nom_fichier_carriere= $nom_fichier_base.'Export-carriere.csv';
-
-
-$url =  explode ('/', $_SERVER['REQUEST_URI']);
-
-$email_debut=str_replace('~','', $url[1]);
-
-
-
-$rep= explode('.',$email_debut);
-
-$prenom= ucfirst($rep[0]);
-$nom= ucfirst($rep[1]);
-$poste='';
-$equipe='';
-$tel='';
-$lieu='';
-$adresse='';
-
-$streamContext = stream_context_create([
-    'ssl' => [
-        'verify_peer'      => false,
-        'verify_peer_name' => false
-        ]
-    ]);
-$organisme='';
-$grade='';
-if (($handle = fopen($nom_fichier_personnel, "r",false, $streamContext)) !== FALSE) {
-
-	while (($ligne = fgetcsv($handle, 1000, ";")) !== FALSE) {
-		$nom_minuscule = strtolower($nom);
-		$prenom_minuscule = strtolower($prenom);
-		if(strtolower($ligne[$champ_nom]) == $nom_minuscule && strtolower(suppr_accents(utf8_encode($ligne[$champ_prenom]),'utf-8')) == $prenom_minuscule ) {
-			// poste
-			$s=explode( ' - ' ,$ligne[$champ_type]  ) ;
-
-			if($s[0] =='IT'){
-				$poste='';
-			}else {
-				$poste= utf8_encode($s[1]);
-				 list($organisme, $grade) = recupCarriere($nom_fichier_carriere, strtoupper($nom), strtoupper($prenom), $streamContext);
-			}
-
-			$equipe = recupEquipe($nom_fichier_ratachement, strtoupper($nom_minuscule), strtoupper($prenom_minuscule), $streamContext);
-			list($email,$tel,$adresse) = recupImplantation($nom_fichier_implantation, strtoupper($nom), strtoupper($prenom), $streamContext);
-
-			break;
-		}
-
-
-
-	}
-}
-
-
-$adr =explode('/', $adresse);
-if(  strtolower(trim($adr[0]))== 'jussieu'){
-	$adr[0] = "4 place Jussieu,<br>Boite Courrier 247<br>75252 Paris Cedex 5<br>";
-}
-if(  strtolower(trim($adr[0]))== 'sophie germain'){
-	$adr[0] = "UP7D - Campus des Grands Moulins<br>Boite Courrier 7012<br>Bâtiment Sophie Germain<br>8 Place Aurélie Nemours,<br>- 75205 PARIS Cedex 13<br>";
-	}
-if(!isset($adr[1])){
-	$adr[1]='';
-}
-$adresse ="Bureau 7049, bâtiment Sophie Germain 8 place Aurélie Nemours 75013 Paris<br><br>";
-$web = "http://webusers.imj-prg.fr/~$email_debut/";
-
-$poste= "Doctorant dans l'équipe de Logique<br> Sujet : Énumération de requêtes et graphes Nowhere-Dense<br>";
-
-
-
-
-
-
-
-
-$code_acces = '<p><a class="btn btn-default" href="'.$url_acces.'" role="button">Accès</a></p>';
-
-$email='<script type="text/javascript">
-<!--
-var tg="<";
-var nom="' . $email_debut.'";
-var arob="@";
-
-var hote1="imj";
-var hote2="-prg.fr";
-
-document.write(tg+"a hr"+"ef=mai"+"lto:"+nom);
-document.write(arob+hote1+hote2+">"+nom+arob+hote1+hote2+tg+"/a>");
--->
-</script>
-';
-
-
-
-	//********************************************
-	function recupEquipe($fichierAnnuaireRatach, $nom, $prenom, $streamContext){
-		$champ_equipe = 6;
-		$champ_nom_ratachement = 12;
-		$champ_prenom_ratachement = 14;
-
-		if (($handleRatach = fopen($fichierAnnuaireRatach, "r",false, $streamContext)) !== FALSE) {
-			while (($ligneRatach= fgetcsv($handleRatach, 1000, ";")) !== FALSE) {
-
-				if((utf8_encode($ligneRatach[$champ_nom_ratachement]) ==$nom) && (strtoupper(suppr_accents(utf8_encode($ligneRatach[$champ_prenom_ratachement]),'utf-8')) == $prenom)){
-					$e=explode( '-' ,$ligneRatach[$champ_equipe]  ) ;
-					fclose($handleRatach);
-					return array(utf8_encode($e[1]),  $e[0]);
-				}
-			}
-		}
-
-	}
-	//********************************************
-	function recupImplantation($fichierAnnuaireImpl, $nom, $prenom, $streamContext){
-		$champ_nom = 6;
-		$champ_prenom = 8;
-		$champ_email = 30;
-		$champ_tel=32;
-		$champ_bat=36;
-
-		if (($handle = fopen($fichierAnnuaireImpl, "r",false, $streamContext)) !== FALSE) {
-			while (($ligne= fgetcsv($handle, 1000, ";")) !== FALSE) {
-				if((strtoupper(utf8_encode($ligne[$champ_nom])) == $nom) && (strtoupper(suppr_accents(utf8_encode($ligne[$champ_prenom]),'utf-8')) == $prenom)){
-					$implantation = array($ligne[$champ_email], $ligne[$champ_tel], $ligne[$champ_bat]);
-					fclose($handle);
-					return $implantation ;
-				}
-			}
-		}
-
-	}
-		//********************************************
-	function recupCarriere($fichierAnnuaireCarriere, $nom, $prenom, $streamContext){
-		$champ_nom = 6;
-		$champ_prenom = 8;
-		$champ_organisme = 22;
-		$champ_type_poste = 28;
-
-		if (($handle = fopen($fichierAnnuaireCarriere, "r",false, $streamContext)) !== FALSE) {
-			while (($ligne= fgetcsv($handle, 1000, ";")) !== FALSE) {
-				if((strtoupper(utf8_encode($ligne[$champ_nom])) == $nom) && (strtoupper(suppr_accents(utf8_encode($ligne[$champ_prenom]),'utf-8')) == $prenom)){
-					$s  = explode(' - ', $ligne[$champ_organisme]);
-					$typePoste = explode(' - ',  $ligne[$champ_type_poste]);
-					fclose($handle);
-					if($s[1] != "INCONNU"){
-						return  array($s[1],utf8_encode($typePoste[1]));
-					}
-					else {
-						return array('','');
-					}
-				}
-			}
-		}
-
-	}
-		//********************************************
-	 function suppr_accents($str, $encoding='utf-8'){
-
-	$str = htmlentities($str, ENT_NOQUOTES, $encoding);
-	$str = preg_replace('#&([A-za-z])(?:acute|grave|cedil|circ|orn|ring|slash|th|tilde|uml);#', '\1', $str);
-	$str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str);
-	$str = preg_replace('#&[^;]+;#', '', $str);
-
-	return $str;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -216,18 +11,18 @@ document.write(arob+hote1+hote2+">"+nom+arob+hote1+hote2+tg+"/a>");
 
     <title><?php echo "$prenom $nom"; ?> </title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://www.imj-prg.fr/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS
+    <link href="https://www.imj-prg.fr/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
-    <!-- Custom styles for this template -->
-    <link href="https://www.imj-prg.fr/css/perso.css" rel="stylesheet">
+    <!-- Custom styles for this template
+    <link href="https://www.imj-prg.fr/css/perso.css" rel="stylesheet">-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="http://www.imj-prg.fr/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="http://www.imj-prg.fr/assets/js/ie8-responsive-file-warning.js"></script><![endif]
     <script src="https://www.imj-prg.fr/assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="https://www.imj-prg.fr/assets/js/ie10-viewport-bug-workaround.js"></script>
+-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="https://www.imj-prg.fr/assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -248,8 +43,8 @@ document.write(arob+hote1+hote2+">"+nom+arob+hote1+hote2+tg+"/a>");
 
           </button>
         	<div class="row">
-        		<div class="col-sm-6">   <a class="navbar-brand" href=https://webusers.imj-prg.fr/~alexandre.vigny/> Alexandre Vigny </a>     </div>
-          		<div class="col-sm-3">  <a class="navbar-brand" href=https://webusers.imj-prg.fr/~alexandre.vigny/> Français </a> </div>
+        		<div class="col-sm-6">   <a class="navbar-brand" href=index.html> Alexandre Vigny </a>     </div>
+          		<div class="col-sm-3">  <a class="navbar-brand" href=index.html> Français </a> </div>
           		<div class="col-sm-2">  <a class="navbar-brand" href=en.html> English </a> </div>
 
 
