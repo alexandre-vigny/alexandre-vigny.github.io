@@ -54,3 +54,36 @@ a:hover, a:focus{
 }
 
 ul.space_list li { margin-bottom: 10px; }
+
+
+
+/* for the buttons to expend info*/
+.hh {
+  display: none;
+  /*height: 100px;
+  background: red;*/
+}
+:checked ~ .hh{
+  display: block;
+  text-align: justify;
+  text-justify: inter-word;
+  font-style:italic;
+}
+
+.label{
+}
+.link{
+  /* color:#000; */
+  /* font-size:large; */
+}
+
+label:hover {
+  color:#aaa;
+  cursor:pointer;
+}
+
+
+/* end buttons*/
+
+
+/* copypast */
