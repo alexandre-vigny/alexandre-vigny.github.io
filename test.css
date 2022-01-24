@@ -1,63 +1,90 @@
-.enseignement {
-    display: none;
-}
-.enseignement:target {
-    display: block;
-}
-
-.blank{
- display: none;
-}
-
-a{
-    color: brown;
-}
-
-a:hover {
-    color: red;
-}
-
-/* from university */
-
+/* ----------------general---------------- */
 body {
-  padding-top: 50px;
   padding-bottom: 20px;
   font-family: "Open Sans",sans-serif;
 }
-td, th {
-	padding:3px 5px;
-}
-h1.titrePrincipal {
-  margin-left: 1.0em;
-}
 
-.container-fluid {
-	padding-left:4.0em;
-}
-/* a{
-	color: #352F95;
-}
-a:hover, a:focus{
-	color: #352F95;
-} */
-
-/* end university */
-
-
-.centered {
-  /* position: absolute; */
-  /* top: 10%; */
-  /* left: 50%; */
-  transform: translate( 0%, 40%);
-  /* text-align: center; */
-  font-size: 15px;
+a{
+  color: brown;
+  text-decoration: none;
 }
 
-ul.space_list li { margin-bottom: 10px; }
+a:hover {
+  color: red;
+}
+/* ----------------end general---------------- */
+
+
+/* ----------------------------HEADER---------------------------- */
+.topnav {
+  background-color: #222222; /* black; */
+  overflow: hidden;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.topnav a {
+  float: left;
+  color: #9C9D9D; /* pale */
+  text-decoration: none;
+  text-align: center;
+  padding-right: 25px;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  /* background-color: #ddd; */
+  color: #FFFFFD;   /* white; */
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  color: #FFFFFD; /* white; */
+}
+/* ----------------------------END HEADER----------------------------  */
+
+
+/* ---------------------- BOTTOM ---------------------- */
+.last{
+  background-color: white;
+
+}
+/* ----------------------END BOTTOM---------------------- */
 
 
 
-/* for the buttons to expend info*/
+/* --------------container and padding -------------- */
+
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+
+@media (min-width:768px){.container{width:750px}
+}
+@media (min-width:992px){.container{width:970px}
+}
+@media (min-width:1200px){.container{width:1170px}
+}
+
+.jumbotron .container{max-width:100%}
+.jumbotron .h1,.jumbotron h1{font-size:63px}
+
+.jumbotron{
+  padding-bottom: 30px;
+  padding-top: 30px;
+  background-color: #EEEEEE;
+}
+
+/* --------------end container and padding --------------*/
+
+
+
+
+ul.space_list li {
+  margin-bottom: 10px;
+}
+
+
+
+/*-------------------- for the buttons to expend info--------------------*/
 .hh {
   display: none;
   /*height: 100px;
@@ -83,7 +110,7 @@ label:hover {
 }
 
 
-/* end buttons*/
+/* --------------------end buttons--------------------*/
 
 
 /* copypast */
@@ -92,15 +119,6 @@ label:hover {
 #sebi {
   https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz
 }
-
-/* Responsive columns - one column layout (vertical) on small screens */
-/* @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-} */
 
 .card {
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
@@ -113,4 +131,33 @@ label:hover {
   padding: 16px;
   text-align: left;
   /* background-color: #f1f1f1; */
+}
+
+.block{
+
+}
+
+
+/* -------------------------TEST------------------------- */
+.column2 {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 30px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
 }
