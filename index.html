@@ -40,46 +40,6 @@
 </head>
 
 <body>
-  <!-- Def of all links -->
-  <?php
-    // TEAM BREMEN
-    $team = "https://www.uni-bremen.de/en/theorie/team";
-    function Team() {
-    	global $team;
-    	print "<a href=$team>team</a>";
-    }
-
-    // SEBI
-    $sebi = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz";
-    function Sebi() {
-    	global $sebi;
-    	print "<a href=$sebi>Sebastian Siebertz</a>";
-    }
-
-    $bojan = "https://www.mimuw.edu.pl/~bojan/";
-    function Bojan() {
-    	global $Bojan;
-    	print "<a href=$bojan>Mikołaj Bojańczyk</a>";
-    }
-
-    $arnaud = "http://www.logique.jussieu.fr/~durand/";
-    function Arnaud() {
-    	global $arnaud;
-    	print "<a href=$arnaud>Arnaud Durand</a>";
-    }
-
-    $luc = "http://pages.saclay.inria.fr/luc.segoufin/";
-    function Luc() {
-    	global $luc;
-    	print "<a href=$luc>Luc Segoufin</a>";
-    }
-  ?>
-
-
-
-
-
-
   <div class="topnav">
     <div class="container">
     	<a class="active" href=index.html> Alexandre Vigny </a>
@@ -123,15 +83,15 @@
 
       <div class="block">
     		<h2>About me</h2>
-    		<p>I am currently a postdoc at the University of Bremen, in the <?php Team()?> of <?php Sebi()?>.<br>
+    		<p>I am currently a postdoc at the University of Bremen, in the <a href=https://www.uni-bremen.de/en/theorie/team>team</a> of <a href=https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz>Sebastian Siebertz</a>.<br>
           <!-- <a href="https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz">Sebastian Siebertz</a>.<br> -->
     			Before that, I was a postdoc at the University of Warsaw, funded by the ERC grant Lipa of
           <!-- <a href="https://www.mimuw.edu.pl/~bojan/"> Mikołaj Bojańczyk</a>.<br> -->
-          <?php Bojan()?>.<br>
+          <a href=https://www.mimuw.edu.pl/~bojan/>Mikołaj Bojańczyk</a>.<br>
     			A couple of years earlier, I was a PhD student at the University Paris Diderot under the supervision of
           <!-- <a href= "http://www.logique.jussieu.fr/~durand/">
     			Arnaud Durand</a> and <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>. -->
-          <?php Arnaud()?> and <?php Luc()?>.
+          <a href=http://www.logique.jussieu.fr/~durand/>Arnaud Durand</a> and <a href=http://pages.saclay.inria.fr/luc.segoufin/>Luc Segoufin</a>.
         </p>
       </div>
       <!-- end block -->
