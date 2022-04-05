@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="image.ico" type="image/x-icon">
-    <title>Alexandre Vigny </title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="image.ico" type="image/x-icon">
+  <title>Alexandre Vigny </title>
 
+
+
+  <style>
+    body{
+      max-width:100%;
+      /* background-color: #EEEEEE; */
+    }
+  </style>
     <!-- Bootstrap core CSS -->
-    <link href="https://www.imj-prg.fr/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://www.imj-prg.fr/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
-    <link href="https://www.imj-prg.fr/css/perso.css" rel="stylesheet">
+    <!-- <link href="https://www.imj-prg.fr/css/perso.css" rel="stylesheet"> -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="http://www.imj-prg.fr/assets/js/ie8-responsive-file-warning.js"></script><![endif]
@@ -29,72 +37,56 @@
     <![endif]-->
 
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="test.css" />
-  </head>
+</head>
 
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-
-          </button>
-        	<div class="row">
-        		<div class="col-sm-5">   <a class="navbar-brand" href=index.html> Alexandre Vigny </a>     </div>
-          		<div class="col-sm-3">  <a class="navbar-brand" href=fr.html> Français </a> </div>
-              <div class="col-sm-3">  <a class="navbar-brand" href=index.html> English </a> </div>
-              <div class="col-sm-1">  <a class="navbar-brand" href=cv_vigny.pdf> CV </a> </div>
-
-
-        	</div>
-        </div>
-      </div>
+<body>
+  <div class="topnav">
+    <div class="container">
+    	<a class="navbar-brand" href=index.html> Alexandre Vigny </a>
+    	<a class="active" href=fr.html> Français </a>
+    	<a class="navbar-brand" href=index.html> English </a>
+      <a class="navbar-brand" href=cv_vigny.pdf> CV </a>
     </div>
+  </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<div class="row">
-
-      <div class="col-md-2"><img src="image.jpg" height="120%" width="120%">
+  <div class="jumbotron">
+  	<div class="container">
+      <h1>Alexandre Vigny</h1>
+      <div class="block">
+        <img src="image.jpg" style="float: left; width:180px; border-right:40px solid #EEEEEE;">
+        <ul class=space_list style="list-style: none;" >
+          <li>
+            <a href="https://dblp.uni-trier.de/pid/197/0077.html">
+              <img align="middle" src="https://dblp.uni-trier.de/img/dblp.icon.192x192.png" style="width:50px"> DBLP
+            </a>
+          </li>
+          <li>
+            <a href="https://scholar.google.com/citations?user=v4ANOEIAAAAJ">
+              <img align="middle" src="https://scholar.google.com/favicon.ico" style="width:50px"> Google Scholar
+            </a>
+          <li>
+            <a href="https://arxiv.org/search/?searchtype=author&query=Vigny%2C+A">
+              <img align="middle" src="https://static.arxiv.org/static/base/0.17.2.1/images/icons/favicon.ico" style="width:50px"> ArXiv
+            </a>
+          </li>
+          <li>
+            <a href="https://orcid.org/0000-0002-4298-8876">
+              <img align="middle" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" style="width:50px" > ORCID
+            </a>
+            <!-- height="15%" width="15%" -->
+          </li>
+        </ul>
       </div>
-      <div class="col-md-3">
-        <div class= centered>
-          <ul class=space_list style="list-style: none;" >
-            <li>
-              <a href="https://dblp.uni-trier.de/pid/197/0077.html">
-                <img src="https://dblp.uni-trier.de/img/dblp.icon.192x192.png" height="15%" width="15%"> DBLP
-              </a>
-            </li>
-            <li>
-              <a href="https://scholar.google.com/citations?user=v4ANOEIAAAAJ">
-                <img src="https://scholar.google.com/favicon.ico" height="15%" width="15%"> Google Scholar
-              </a>
-            <li>
-              <a href="https://arxiv.org/search/?searchtype=author&query=Vigny%2C+A">
-                <img src="https://static.arxiv.org/static/base/0.17.2.1/images/icons/favicon.ico" height="15%" width="15%"> ArXiv
-              </a>
-            </li>
-            <li>
-              <a href="https://orcid.org/0000-0002-4298-8876">
-                <img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height="15%" width="15%"> ORCID
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-			<div class="col-md-7">
-				<h1>Alexandre Vigny</h1>
-
+      <!-- end block -->
+      <div class="block">
+        <h2>Rapidement</h2>
 				<p>Je suis actuellement un postdoc à l'Université de Brême, dans <a href="https://www.uni-bremen.de/en/theorie/team">l'équipe</a>
           de <a href="https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>.<br>
 					Précédemment j'étais un postdoc à l'Université de Varsovie, financé par l'ERC Lipa de
 					<a href="https://www.mimuw.edu.pl/~bojan/"> Mikołaj Bojańczyk</a>.<br>
 					Avant ça, j'étais doctorant à l'Université Paris Diderot sous la direction d' <a href= "http://www.logique.jussieu.fr/~durand/">
 					Arnaud Durand</a> et de <a href="http://pages.saclay.inria.fr/luc.segoufin/"> Luc Segoufin</a>.</p>
-					<br><br>
 			</div>
 
 			<h2>Postes précédents / actuel</h2>
@@ -110,15 +102,23 @@
       <h3>Prépublication</h3>
 			<ul>
         <li>
-          <a href="https://arxiv.org/abs/2107.05928"> First-Order Logic with Connectivity Operators.</a><br>
-          Avec Nicole Schrader et <a href = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>,
+          <a href="https://arxiv.org/abs/2111.03725"> Algorithms and data structures for first-order logic with connectivity under vertex failures.</a><br>
+          Avec Michał Pilipczuk, Nicole Schirrmacher, <a href = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>, and Szymon Toruńczyk,
           disponible sur arXiv.
         </li><br>
+
+        <li>
+          <a href="https://arxiv.org/abs/2105.03693"> Discrepancy and Sparsity.</a><br>
+          Avec Mario Grobler, Yiting Jiang, Patrice Ossona de Mendez, and Sebastian Siebertz,
+          disponible sur arXiv.
+        </li><br>
+
         <li>
           <a href="https://arxiv.org/abs/1903.00505"> Parameterized Distributed Complexity Theory: A logical approach.</a><br>
           Avec <a href = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>,
           disponible sur arXiv.
         </li><br>
+
         <li> <a href="https://arxiv.org/abs/2010.02982"> Dynamic Query Evaluation Over Structures with Low Degree.</a><br>
           Disponible sur arXiv.
         </li><br>
@@ -126,6 +126,18 @@
 
       <h3>Actes de Conférences</h3>
       <ul>
+        <li>
+          <a href="https://arxiv.org/abs/2111.14506"> Local planar domination revisited.</a><br>
+          Avec Ozan Heydt, and <a href = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>,
+          accepté à SIROCCO 2022.
+        </li><br>
+
+        <li>
+          <a href="https://arxiv.org/abs/2107.05928"> First-Order Logic with Connectivity Operators.</a><br>
+          Avec Nicole Schrader et <a href = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>,
+          présenté à CSL 2022.
+        </li><br>
+
         <li>
           <a href="https://drops.dagstuhl.de/opus/volltexte/2021/14513/"> Recursive Backdoors for SAT.</a><br>
           Avec Nikolas Mählmann et <a href = "https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz"> Sebastian Siebertz</a>,
@@ -199,6 +211,24 @@
 
 			<h2>Enseignements</h2>
       <ul>
+        <li> 2021-2022</li>
+          <div><input type="checkbox" id="DGA" style="display:none;">
+            <div class="link">
+              Database Graph and Algorithms
+              <label for="DGA">&#8600;</label>
+            </div>
+            <div class="hh"> All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br><br>
+            </div>
+          </div>
+          <div><input type="checkbox" id="SMT" style="display:none;">
+            <div class="link">
+              Set and Model Theory
+              <label for="SMT">&#8600;</label>
+            </div>
+            <div class="hh"> All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br><br>
+            </div>
+          </div>
+
         <li> 2020-2021</li>
           <div><input type="checkbox" id="DGA" style="display:none;">
             <div class="link">
@@ -314,30 +344,30 @@
 			</ul>
 		</div>
 	</div>
-</div>
 
-<div class="container">
-	<!-- Example row of columns -->
-	<div class="row">
-		<div class="col-md-4">
-			<h2>Contact</h2>
-			<p>E-mail: vigny[at]uni-bremen[dot]de<br>
-				URL: <a href="https://alexandre-vigny.github.io">https://alexandre-vigny.github.io</a><br>
-        Phone: 0421 21863752<br>
-			</p>
+  <div class="container last">
+  	<!-- Example row of columns -->
+  	<div class="row">
+  		<div class="column2">
+  			<h2>Contact</h2>
+  			<p>E-mail: vigny[at]uni-bremen[dot]de<br>
+  				URL: <a href="https://alexandre-vigny.github.io">https://alexandre-vigny.github.io</a><br>
+          Phone: 0421 21863752<br>
+  			</p>
 
-		</div>
-		<div class="col-md-8">
-			<h2>Adresse</h2>
-				Bureau 3170 MZH, 28359 Brême.
-		</div>
-	</div>
+  		</div>
+  		<div class="column2">
+  			<h2>Address</h2>
+  				Office 3170 MZH, 28359 Bremen.
+  		</div>
+  	</div>
 
 
-	<footer>
-		<p>&copy; IMJ-PRG </p>
-	</footer>
-</div><!-- /container -->
+  	<!-- <footer>
+  		<p>&copy; IMJ-PRG </p>
+  	</footer> -->
+  </div>
+  <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -345,5 +375,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://www.imj-prg.fr/bootstrap/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
