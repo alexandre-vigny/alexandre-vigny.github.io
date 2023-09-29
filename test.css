@@ -2,6 +2,19 @@
 body {
   padding-bottom: 20px;
   font-family: "Open Sans",sans-serif;
+  background-color: #EEEEEE;
+  /* background-color: white; */
+
+}
+
+
+h2 {
+  border-bottom: medium solid #ff0000 ;
+}
+
+h3 {
+  border-bottom: medium solid #ff8080;
+
 }
 
 a{
@@ -12,16 +25,34 @@ a{
 a:hover {
   color: red;
 }
+
+
 /* ----------------end general---------------- */
+
+.stickytop {
+  max-width:100%;
+  /* background-color: #EEEEEE; */
+  /* background-color: white; */
+  position: -webkit-sticky; /*  Making it sticky ! */
+  position: sticky;
+  top: 0;
+  /* border-style: outset; */
+}
 
 
 /* ----------------------------HEADER---------------------------- */
 .topnav {
+  max-width:100%;
   background-color: #222222; /* black; */
   overflow: hidden;
   padding-top: 14px;
   padding-bottom: 14px;
+  padding-left: 14px;
+  position: -webkit-sticky; /*  Making it sticky ! */
+  position: sticky;
+  top: 0;
 }
+
 
 .topnav a {
   float: left;
@@ -40,6 +71,16 @@ a:hover {
 /* Add a color to the active/current link */
 .topnav a.active {
   color: #FFFFFD; /* white; */
+}
+
+
+.menu{
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: #EEEEEE;
+
+  /* border-style: outset; */
 }
 /* ----------------------------END HEADER----------------------------  */
 
@@ -64,27 +105,48 @@ a:hover {
 @media (min-width:1200px){.container{width:1170px}
 }
 
+
+
+.containerTop{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+
+@media (min-width:768px){.containerTop{width:750px}
+}
+@media (min-width:992px){.containerTop{width:970px}
+}
+@media (min-width:1200px){.containerTop{width:1170px}
+}
+
 .jumbotron .container{max-width:100%}
 .jumbotron .h1,.jumbotron h1{font-size:63px}
 
 .jumbotron{
   padding-bottom: 30px;
-  padding-top: 30px;
+  /* padding-top: 30px; */
+  /* padding-top: 15px; */
   background-color: #EEEEEE;
 }
 
 /* --------------end container and padding --------------*/
 
 
-
-
 ul.space_list li {
+  margin-left: -35px;
   margin-bottom: 10px;
 }
 
 
+.hidden {
+  display: none;
+}
+.hidden:target {
+  display: inline-block;
+  scroll-margin-top: 2000px;
+}
+
 
 /*-------------------- for the buttons to expend info--------------------*/
+
+
 .hh {
   display: none;
   /*height: 100px;
@@ -92,9 +154,9 @@ ul.space_list li {
 }
 :checked ~ .hh{
   display: block;
-  text-align: justify;
-  text-justify: inter-word;
-  font-style:italic;
+  /* text-align: justify;
+  text-justify: inter-word; */
+  /* font-style:italic; */
 }
 
 .label{
@@ -115,27 +177,67 @@ label:hover {
 
 /* copypast */
 
-/* link to people webpage */
-#sebi {
-  https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz
-}
-
-.card {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-  padding: 16px;
-  text-align: center;
-  /* background-color: #f1f1f1; */
-}
-.card2 {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-  padding: 16px;
+table.bottom th, table.bottom td {
   text-align: left;
-  /* background-color: #f1f1f1; */
+  vertical-align: top;
+  border:1px solid black;
+  width: 100%;
+  /* border-collapse: collapse; */
 }
 
-.block{
-
+/* table.top th, table.top td {
+  text-align: left;
+  border:1px solid black;
+  border-collapse: collapse;
 }
+@media(max-width: 470px) {
+  table.top td {
+    display: table-row;
+  }
+} */
+
+table.bottom th, table.bottom td {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  vertical-align: top;
+  border:1px solid black;
+  /* border-collapse: collapse; */
+}
+/* @media (max-width: 800px) {
+  tr {display: block; }
+  td {display: inline-block; word-break: break-all;}
+} */
+
+table.top th, table.top td {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  vertical-align: top;
+  /* border:1px solid black; */
+  display: inline-block;
+  /* border-collapse: collapse; */
+}
+@media (max-width: 1000px) {
+  /* table.top tr {display: block; } */
+  table.top td {word-break: break-all; }
+}
+
+
+/* </style>
+<body>
+
+<h2>Set the first column to 70% of the table width</h2>
+
+<table>
+  <tr>
+    <td>Firstname Firstname Firstname </th>
+    <td>Lastname Firstname Firstname </th> 
+    <td>Age</th>
+  </tr>
+  
+</table> */
+
 
 
 /* -------------------------TEST------------------------- */
