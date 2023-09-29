@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="image.ico" type="image/x-icon">
+  <title>Alexandre Vigny </title>
+
+	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="test.css" />
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="container">
+    	<a class="active" href=index.html> Alexandre Vigny </a>
+    	<a class="navbar-brand" href=publi.html#full> Publications </a>
+      <a class="navbar-brand" href=cv_vigny.pdf> CV </a>
+    </div>
+  </div>
+
+
+  <!-- Main jumbotron -->
+  <div class="jumbotron">
+  	<div class="container">
+      <h1>Alexandre Vigny</h1>
+      <table class="top">
+        <tr>
+          <td>
+            <div class="figure"> 
+              <img src="image.jpg" style="float: left; width:200px;">
+            </div>
+          </td>
+          <td>
+            <ul class=space_list style="list-style: none;" >
+              <li>
+                <a href="https://dblp.uni-trier.de/pid/197/0077.html">
+                  <img align="middle" src="https://dblp.uni-trier.de/img/dblp.icon.192x192.png" style="width:50px"> DBLP
+                </a>
+              </li>
+              <li>
+                <a href="https://scholar.google.com/citations?user=v4ANOEIAAAAJ">
+                  <img align="middle" src="https://scholar.google.com/favicon.ico" style="width:50px"> Google Scholar
+                </a>
+              <li>
+                <a href="https://arxiv.org/search/?searchtype=author&query=Vigny%2C+A">
+                  <img align="middle" src="https://static.arxiv.org/static/base/0.17.2.1/images/icons/favicon.ico" style="width:50px"> ArXiv
+                </a>
+              </li>
+              <li>
+                <a href="https://orcid.org/0000-0002-4298-8876">
+                  <img align="middle" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" style="width:50px" > ORCID
+                </a>
+                <!-- height="15%" width="15%" -->
+              </li>
+            </ul>
+          </td>
+          <td>
+            <h3 id = "contact">Contact</h3>
+            <p>E-mail: vigny[at]uni-bremen[dot]de<br>
+              URL: <a href="https://alexandre-vigny.github.io">https://alexandre-vigny.github.io</a><br>
+              Phone: 0421 21863752<br>
+              Adress: Office 3170 MZH, 28359 Bremen.
+            </p>
+          </td>
+        </tr>
+      </table>
+      <!-- end block -->
