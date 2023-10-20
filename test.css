@@ -106,17 +106,8 @@ a:hover {
 }
 
 
-.jumbotron .container{max-width:100%}
-/* .jumbotron .h1,.jumbotron h1{font-size:63px} */
-
-.jumbotron{
-  padding-bottom: 30px;
-  /* padding-top: 30px; */
-  /* padding-top: 15px; */
-  background-color: #EEEEEE;
-}
-
 /* --------------end container and padding --------------*/
+
 
 
 ul.space_list li {
@@ -141,7 +132,7 @@ ul{
 
 
 /*-------------------- for the buttons to expend info--------------------*/
-
+/* Better with summary / details */
 
 .hh {
   display: none;
@@ -181,17 +172,6 @@ table.bottom th, table.bottom td {
   /* border-collapse: collapse; */
 }
 
-/* table.top th, table.top td {
-  text-align: left;
-  border:1px solid black;
-  border-collapse: collapse;
-}
-@media(max-width: 470px) {
-  table.top td {
-    display: table-row;
-  }
-} */
-
 table.bottom th, table.bottom td {
   padding-left: 10px;
   padding-right: 10px;
@@ -200,10 +180,6 @@ table.bottom th, table.bottom td {
   border:1px solid black;
   /* border-collapse: collapse; */
 }
-/* @media (max-width: 800px) {
-  tr {display: block; }
-  td {display: inline-block; word-break: break-all;}
-} */
 
 table.top th, table.top td {
   padding-left: 10px;
@@ -218,21 +194,6 @@ table.top th, table.top td {
   /* table.top tr {display: block; } */
   table.top td {word-break: break-all; }
 }
-
-
-/* </style>
-<body>
-
-<h2>Set the first column to 70% of the table width</h2>
-
-<table>
-  <tr>
-    <td>Firstname Firstname Firstname </th>
-    <td>Lastname Firstname Firstname </th> 
-    <td>Age</th>
-  </tr>
-  
-</table> */
 
 
 
