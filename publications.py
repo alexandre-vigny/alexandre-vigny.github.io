@@ -1,6 +1,6 @@
 
 luc =       "<a href=http://pages.saclay.inria.fr/luc.segoufin/>Luc Segoufin</a>"
-arnaud =    "<a href=http://www.logique.jussieu.fr/~durand/>Arnaud Durand</a>"
+arnaud =    "<a href=https://webusers.imj-prg.fr/~arnaud.durand/>Arnaud Durand</a>"
 mikolaj =   "<a href=https://www.mimuw.edu.pl/~bojan/>Mikołaj Bojańczyk</a>"
 sebi =      "<a href=https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz>Sebastian Siebertz</a>"
 szymon =    "<a href=https://www.mimuw.edu.pl/~szymtor/>Szymon Toruńczyk</a>"
@@ -60,9 +60,10 @@ publi.append(MCSepLogic)
 FoConnDef =  { 
    "link":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/15754/\"> First-Order Logic with Connectivity Operators.</a>",
    "authors":"With "+nicoleSchi+" and "+sebi+".",
-   "conf":"CSL 2022",
    "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM ToCL</a>",
-   "tag":"Separator Logic"
+   "tag":"Separator Logic",
+   "conf":"CSL 2022",
+   "top":True
 }
 publi.append(FoConnDef)
 
@@ -185,14 +186,14 @@ def readhtml (pub):
       res+= " Presented at "+pub["conf"]+"."
    else:
       res+= " Only on arXiv."
-   res+="<br>"
+   # res+="<br>"
    # Possibly add long version or a video
    if "long" in pub:
       res+=pub["long"]
    if "video" in pub:
       res+=pub["video"]
-   if "long" in pub or "video" in pub:
-      res+="<br>"
+   # if "long" in pub or "video" in pub:
+   #    res+="<br>"
    res+="</li>"
    # return the string
    return(res)
@@ -208,7 +209,7 @@ besthtml="<ul>\n"
 for pub in publi:
    if "top" in pub and pub["top"]==True:
       best+=readmd(pub)
-      besthtml+="\t"+readhtml(pub)+"<br>\n"
+      besthtml+="\t"+readhtml(pub)+"\n"
 
 besthtml+="</ul>\n"
 # End of best publication
@@ -221,7 +222,7 @@ apphtml="""<div id="full" class="hidden">
                <ul>\n"""
 for pub in publi:
    app+=readmd(pub)
-   apphtml+="\t"+readhtml(pub)+"<br>\n"
+   apphtml+="\t"+readhtml(pub)+"\n"
 apphtml+="</ul></div>\n"
 # End of publication by apparition order
 
@@ -245,7 +246,7 @@ for x in ["Separator Logic","Graph Combinatorics", "Distributed computing", "Que
    for pub in publi:
       if "tag" in pub and pub["tag"]==x:
          top+=readmd(pub)
-         tophtml+="\t\t\t\t\t"+readhtml(pub)+"<br>\n"
+         tophtml+="\t\t\t\t\t"+readhtml(pub)+"\n"
    tophtml+="\t\t</ul>\n</div></div>\n\n\n"
 
 # End publi by topics
@@ -259,7 +260,7 @@ for x in ["Separator Logic","Graph Combinatorics", "Distributed computing", "Que
                <ul>\n"""
    for pub in publi:
       if "tag" in pub and pub["tag"]==x:
-         newTop+="\t\t\t\t\t"+readhtml(pub)+"<br>\n"
+         newTop+="\t\t\t\t\t"+readhtml(pub)+"\n"
    newTop+="\t\t</ul>\n"
 newTop+="</div>\n\n\n"
 

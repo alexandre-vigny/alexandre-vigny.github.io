@@ -18,8 +18,13 @@ h2 {
   border-bottom: medium solid #ff0000 ;
 }
 
-h3 {
+/* h3 {
   border-bottom: medium solid #ff8080;
+
+} */
+
+h3 {
+  border-bottom: thin solid #ff0000;
 
 }
 
@@ -104,8 +109,19 @@ a:hover {
 
 .container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 
-@media (min-width:768px){.container{width:750px}
+/*as soon as reasonable, some margin*/
+@media (min-width:680px){.container{width:670px}
 }
+
+/*if screan big enough, all in one line*/
+@media (min-width:880px){.container{width:860px}
+} 
+
+/*if very big screan, bo not extend 1000px*/
+@media (min-width:1200px){.container{width:1000px}
+}
+
+/*
 @media (min-width:992px){.container{width:970px}
 }
 @media (min-width:1200px){.container{width:1170px}
@@ -115,12 +131,12 @@ a:hover {
 
 .containerTop{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 
-@media (min-width:768px){.containerTop{width:750px}
+@media (min-width:768px){.containerTop{width: 750px}
 }
 @media (min-width:992px){.containerTop{width:970px}
 }
 @media (min-width:1200px){.containerTop{width:1170px}
-}
+} */
 
 .jumbotron .container{max-width:100%}
 .jumbotron .h1,.jumbotron h1{font-size:63px}
@@ -140,6 +156,12 @@ ul.space_list li {
   margin-bottom: 10px;
 }
 
+ul li {
+  margin-top: 10px;
+}
+ul{
+  margin-bottom: 10px;
+}
 
 .hidden {
   display: none;

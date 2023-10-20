@@ -55,10 +55,10 @@
           </td>
           <td>
             <h3 id = "contact">Contact</h3>
-            <p>E-mail: vigny[at]uni-bremen[dot]de<br>
+            <p>E-mail: alexandre [dot] vigny [at] uca [dot] fr<br>
               URL: <a href="https://alexandre-vigny.github.io">https://alexandre-vigny.github.io</a><br>
-              Phone: 0421 21863752<br>
-              Adress: Office 3170 MZH, 28359 Bremen.
+              Phone: 04 73 40 50 49<br>
+              Adress: Office 107B, 1 rue de la Chebarde, 63178 Aubière.
             </p>
           </td>
         </tr>
