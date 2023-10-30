@@ -36,6 +36,15 @@ DisPath =  {
 publi.append(DisPath)
 
 
+DistribDom =  { 
+   "link":"<a href=\"https://arxiv.org/pdf/2207.02669.pdf\"> Distributed domination on sparse graph classes.</a>",
+   "journal":"<a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0195669823000902\">European Journal of Combinatorics</a>",
+   "authors":"With "+ozan+", "+simeon+", "+patrice+" and "+sebi+".",
+   "tag":"Distributed computing",
+}
+publi.append(DistribDom)
+
+
 
 MonaStabl =  { 
    "link":"<a href=\"https://doi.org/10.4230/LIPIcs.ISAAC.2022.11\"> Combinatorial and Algorithmic Aspects of Monadic Stability.</a>",
@@ -59,10 +68,10 @@ publi.append(MCSepLogic)
 
 FoConnDef =  { 
    "link":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/15754/\"> First-Order Logic with Connectivity Operators.</a>",
-   "authors":"With "+nicoleSchi+" and "+sebi+".",
-   "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM ToCL</a>",
-   "tag":"Separator Logic",
    "conf":"CSL 2022",
+   "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM ToCL</a>",
+   "authors":"With "+nicoleSchi+" and "+sebi+".",
+   "tag":"Separator Logic",
    "top":True
 }
 publi.append(FoConnDef)
@@ -75,6 +84,16 @@ LocalDomPla =  {
    "tag":"Distributed computing"
 }
 publi.append(LocalDomPla)
+
+Discrepancy =  { 
+   "link":"<a href=\"https://arxiv.org/abs/2105.03693\"> Discrepancy and Sparsity.</a>",
+   "authors":"With "+mario+", "+yiting+", "+patrice+" and "+sebi+".",
+   "tag":"Graph Combinatorics",
+}
+publi.append(Discrepancy)
+
+
+
 
 LocalDomBE =  { 
    "link":"<a href=\"https://arxiv.org/abs/2012.02701\"> Constant Round Distributed Domination on Graph Classes with Bounded Expansion.</a>",
@@ -310,7 +329,7 @@ html.write("""
       <div class="topnav">
          <div class="container">
             <a class="navbar-brand" href=index.html> Alexandre Vigny </a>
-            <a class="active" href=test.html#publi> Publications </a>
+            <a class="active" href=publi.html#full> Publications </a>
             <a class="navbar-brand" href=cv_vigny.pdf> CV </a>
          </div>
       </div>
