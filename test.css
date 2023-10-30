@@ -87,6 +87,13 @@ a:hover {
 
   /* border-style: outset; */
 }
+
+details > summary:hover{
+  color: gray;
+  cursor: pointer;
+}
+
+
 /* ----------------------------END HEADER----------------------------  */
 
 /* --------------container and padding -------------- */
