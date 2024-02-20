@@ -30,6 +30,7 @@ f.write("""
 
     <h2>Some links</h2>
     <ul>
+        <li><b>Open PhD position, more information <a href="these-2024.pdf">here</a>.</b></li>
         <li> Theoretical Computer Scientists for Future
         <a href="https://tcs4f.org">
         <img width="80" src="https://tcs4f.org/themes/tcs4f/img/brilliant_tcs_4future.png" alt="TCS 4 Future brillant button">
@@ -61,106 +62,60 @@ f.write("""
     <!-- Start Teaching Block -->
     <h2> Teaching (in French and English) </h2>
     <h3>In Clermont</h3>
-    <details>
-        <summary>Soon...</summary>
-        Starting December 2023.
-    </details>
-        
+    <ul>
+        <!-- 
+            <details>
+                <summary>Algorithmique</summary>
+                some more info
+            </details>
+        -->
+
+        <li>2023-2024</li>
+        Algorithmique<br>
+        Programmation orientée Objet<br>
+        Projet informatique<br>
+    </ul>
     <h3>In Bremen</h3>
     <ul>
         <li> 2021-2022</li>
-        <div><input type="checkbox" id="DGA" style="display:none;">
-            <div class="link">
-                Databases Graphs and Algorithms
-                <label for="DGA">&#8600;</label>
-            </div>
-            <div class="hh">
-                All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br>
-            </div>
+        <div>
+            Databases Graphs and Algorithms
         </div>
-        <div><input type="checkbox" id="SMT" style="display:none;">
-            <div class="link">
-                Set and Model Theory
-                <label for="SMT">&#8600;</label>
-            </div>
-            <div class="hh">
-                All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br>
-            </div>
+        <div>
+            Set and Model Theory
         </div>
 
         <li> 2020-2021</li>
-        <div><input type="checkbox" id="DGA" style="display:none;">
-            <div class="link">
-                Databases Graphs and Algorithms
-                <label for="DGA">&#8600;</label>
-            </div>
-            <div class="hh">
-                All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br>
-            </div>
+        <div>
+            Databases Graphs and Algorithms
         </div>
-        <div><input type="checkbox" id="SMT" style="display:none;">
-            <div class="link">
-                Set and Model Theory
-                <label for="SMT">&#8600;</label>
-            </div>
-            <div class="hh">
-                All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br>
-            </div>
+        <div>
+            Set and Model Theory
         </div>
 
         <li> 2019-2020</li>
-        <div><input type="checkbox" id="paraC" style="display:none;">
-            <div class="link">
-                Parameterized Complexity
-                <label for="paraC">&#8600;</label>
-            </div>
-            <div class="hh">
-                All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br>
-            </div>
+        <div>
+            Parameterized Complexity
         </div>
-        <div><input type="checkbox" id="FMT" style="display:none;">
-            <div class="link">
-                Finite Model Theory
-                <label for="FMT">&#8600;</label>
-            </div>
-            <div class="hh">
-                All in <a href="https://elearning.uni-bremen.de/">Stud.IP</a><br>
-            </div>
+        <div>
+            Finite Model Theory
         </div>
     </ul>
 
     <h3>In Paris</h3> 
     <ul>
         <li> 2017-2018</li>
-        <div><input type="checkbox" id="CI2" style="display:none;">
-            <div class="link">
-                CI2 : Concepts Informatiques, L1 Math-Info 2nd semestre.
-                <label for="CI2">&#8600;</label>
-            </div>
-            <div class="hh">
-                Sur moodle.<br>
-            </div>
+        <div>
+            CI2 : Concepts Informatiques, L1 Math-Info 2nd semestre.
         </div>
 
-        <div><input type="checkbox" id="bd18" style="display:none;">
-            <div class="link">
-                Bases de données, L3 MIASHS, M1 ISIFAR, 2eme semestre.
-                <label for="bd18">&#8600;</label>
-            </div>
-            <div class="hh">
-                Sur moodle.<br>
-            </div>
+        <div>
+            Bases de données, L3 MIASHS, M1 ISIFAR, 2eme semestre.
         </div>
         
         <li> 2016-2017</li>
-        <div><input type="checkbox" id="EA3" style="display:none;">
-            <div class="link">
-                EA3 : Éléments d'Algorithmique, L2 Info 1er semestre.
-                <label for="EA3">&#8600;</label>
-            </div>
-            <div class="hh">
-                La page du <a href="https://www.irif.fr/~amicheli/Ens/EA3/">cours</a> d'Anne Micheli <br>
-            </div>
+        <div>
+            EA3 : Éléments d'Algorithmique, L2 Info 1er semestre.
         </div>
 
         <div><input type="checkbox" id="bd17" style="display:none;">
