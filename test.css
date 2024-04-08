@@ -122,6 +122,11 @@ ul.space_list li {
   margin-bottom: 10px;
 }
 
+ul.publi li{
+  /* List for publications */
+  list-style-type: none;
+}
+
 ul li {
   margin-top: 10px;
 }
@@ -136,6 +141,35 @@ ul{
   display: inline-block;
   scroll-margin-top: 2000px;
 }
+
+/* -------------------- Boxes DBLP colored  --------------------*/
+/* Example of use :
+<mark class="journal">&#9632;</mark> */
+
+mark.journal {
+  font-size:25px;
+  color:#c32b72;
+  background: none;
+}
+mark.conf {
+  font-size:25px;
+  color:#196ca3;
+  background: none;
+}
+
+/* book also thesis */
+mark.book {
+  font-size:25px;
+  color:#f8c91f;
+  background: none;
+}
+
+mark.arxiv {
+  font-size:25px;
+  color:#606b70;
+  background: none;
+}
+/* -------------------- end Boxes  --------------------*/
 
 
 /*-------------------- for the buttons to expend info--------------------*/
@@ -164,6 +198,7 @@ label:hover {
   color:#aaa;
   cursor:pointer;
 }
+
 
 
 /* --------------------end buttons--------------------*/

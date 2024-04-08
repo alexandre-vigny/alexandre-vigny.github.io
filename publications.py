@@ -189,10 +189,23 @@ def readmd (pub):
    return(res)
 #End of Read fonction
 
-def readhtml (pub):
+def readhtml (pub,type=""):
    res= ""
+   box=""  # color of publi
+   if "journal" in pub:
+      box = "<mark class=\"journal\">&#9632;</mark>"
+   elif "conf" in pub:
+      box = "<mark class=\"conf\">&#9632;</mark>"
+   elif "book" in pub:
+      box = "<mark class=\"book\">&#9632;</mark>"
+   else:
+      box = "<mark class=\"arxiv\">&#9632;</mark>"
+   if type != "": #if type is specified, use this instead
+         box = "<mark class="+type+">&#9632;</mark>"
+
+
    # Write the name and link
-   res+= "<li>"+pub["link"]+"<br>"
+   res+= "<li>"+box+pub["link"]+"<br>"
    # write coauthors if any
    if "authors" in pub:
       res+=pub["authors"]
@@ -223,7 +236,7 @@ i=0
 
 # Writing the list of best publi
 best="# Highlights\n"
-besthtml="<ul>\n"
+besthtml="<ul class = publi>\n"
 for pub in publi:
    if "top" in pub and pub["top"]==True:
       best+=readmd(pub)
@@ -237,7 +250,7 @@ besthtml+="</ul>\n"
 app="# Publication by apparition\n"
 apphtml="""<div id="full" class="hidden">
                <h2>Publications by apparition</h2>
-               <ul>\n"""
+               <ul class = publi>\n"""
 for pub in publi:
    app+=readmd(pub)
    apphtml+="\t"+readhtml(pub)+"\n"
@@ -275,13 +288,39 @@ newTop="""  <div id="topics" class = "hidden">
                <h2>Publications by Topics</h2>\n"""
 for x in ["Separator Logic","Graph Combinatorics", "Distributed computing", "Query Enumeration"]:
    newTop+="<h3>"+x+"""</h3>\n
-               <ul>\n"""
+               <ul class = publi>\n"""
    for pub in publi:
       if "tag" in pub and pub["tag"]==x:
          newTop+="\t\t\t\t\t"+readhtml(pub)+"\n"
    newTop+="\t\t</ul>\n"
 newTop+="</div>\n\n\n"
 
+# Writing list of publi by types
+byTypes="""  <div id="types" class = "hidden">
+               <h2>All Publications</h2>\n"""
+byTypes+="""<h3> Journals </h3>\n
+               <ul class = publi>\n"""
+for pub in publi:
+   if "journal" in pub :
+      byTypes+="\t\t\t\t\t"+readhtml(pub,"journal")+"\n"
+byTypes+="\t\t</ul>\n"
+# fin journal
+byTypes+="""<h3> Conferences </h3>\n
+               <ul class = publi>\n"""
+for pub in publi:
+   if "conf" in pub :
+      byTypes+="\t\t\t\t\t"+readhtml(pub,"conf")+"\n"
+byTypes+="\t\t</ul>\n"
+# fin conf
+
+byTypes+="""<h3> Unpublished </h3>\n
+               <ul class = publi>\n"""
+for pub in publi:
+   if "conf" not in pub and "journal" not in pub :
+      byTypes+="\t\t\t\t\t"+readhtml(pub,"arxiv")+"\n"
+byTypes+="\t\t</ul>\n"
+# fin arxiv
+byTypes+="</div>\n\n\n"
 
 
 md = open("publi.md", "w")
@@ -334,7 +373,7 @@ html.write("""
       </div>
       <div class="menu">
          <div class="container">
-            <a href=#full> Full list &#8600;</a>
+            <a href=#types> Full list &#8600;</a>
             <a href=#topics> By topics &#8600;</a>
          </div>
       </div>
@@ -344,8 +383,9 @@ html.write("""
    <div class="jumbotron">
       <div class="container">
            
+   """+newTop+"\n\n\n"+byTypes+"\n</div>\n</div>\n</body>\n</html>\n")
 
-   """+apphtml+"\n\n\n"+newTop+"\n</div>\n</div>\n</body>\n</html>\n")
+   # """+apphtml+"\n\n\n"+newTop+"\n\n\n"+byTypes+"\n</div>\n</div>\n</body>\n</html>\n")
 
 
 md.close()

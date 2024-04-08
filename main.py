@@ -43,7 +43,7 @@ f.write("""
     <!-- end links -->
 
     <h2 id="publi"> Publications</h2>
-    <a href=publi.html#full>Full list here</a>
+    <a href=publi.html#types>Full list here</a>
     <h3>Highlights</h3> 
     """+besthtml+"""
 
