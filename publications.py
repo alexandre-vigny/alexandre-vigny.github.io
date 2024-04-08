@@ -37,7 +37,7 @@ publi.append(DisPath)
 
 
 DistribDom =  { 
-   "link":"<a href=\"https://arxiv.org/pdf/2207.02669.pdf\"> Distributed domination on sparse graph classes.</a>",
+   "link":"<a href=\"Papers/Distrib-domination-sparse-graph-classes_EJC-2023.pdf\"> Distributed domination on sparse graph classes.</a>",
    "journal":"<a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0195669823000902\">European Journal of Combinatorics</a>",
    "authors":"With "+ozan+", "+simeon+", "+patrice+" and "+sebi+".",
    "tag":"Distributed computing",
@@ -67,8 +67,8 @@ publi.append(MCSepLogic)
 
 
 FoConnDef =  { 
-   "link":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/15754/\"> First-Order Logic with Connectivity Operators.</a>",
-   "conf":"CSL 2022",
+   "link":"<a href=\"Papers/FO-Conn_Schirrmacher-Siebertz-Vigny_TOCL-2023.pdf\"> First-Order Logic with Connectivity Operators.</a>",
+   "conf":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/15754/\"> CSL 2022</a>",
    "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM ToCL</a>",
    "authors":"With "+nicoleSchi+" and "+sebi+".",
    "tag":"Separator Logic",
@@ -205,14 +205,13 @@ def readhtml (pub):
       res+= " Presented at "+pub["conf"]+"."
    else:
       res+= " Only on arXiv."
-   # res+="<br>"
+
    # Possibly add long version or a video
    if "long" in pub:
       res+=pub["long"]
    if "video" in pub:
       res+=pub["video"]
-   # if "long" in pub or "video" in pub:
-   #    res+="<br>"
+
    res+="</li>"
    # return the string
    return(res)
