@@ -330,30 +330,7 @@ byTypes+="</div>\n\n\n"
 md = open("publi.md", "w")
 html = open("publi.html", "w")
 
-md.write(app+"\n"+top)
-# html.write("""
-#            <!DOCTYPE html>
-#            <html lang="en">
-#            <head>
-#             <link rel="stylesheet" media="screen" type="text/css" title="Design" href="test.css" />
-#            </head>
-#            <body>
-#            <div class = stick>
-#                <div class="topnav">
-#                   <a class="navbar-brand" href=test.html> Alexandre Vigny </a>
-#                   <a class="navbar-brand" href=test.html#contact> Contact </a>
-#                   <a class="active" href=test.html#publi> Publications </a>
-#                   <a class="navbar-brand" href=cv_vigny.pdf> CV </a>
-#                </div><br>
-#                <div>
-#                   <label for="0">Full list &#8600;</label>
-#                   <label for="1">By topics &#8600;</label>
-#                </div>
-#             </div>
-           
-#            """+apphtml+"\n\n<br><br><br>\n\n"+apphtml2+"""
-
-#             """+tophtml+"\n</body>\n</html>\n")
+# md.write(app+"\n"+top)
 
 html.write("""
    <!DOCTYPE html>
