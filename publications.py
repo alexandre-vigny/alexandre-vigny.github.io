@@ -367,7 +367,7 @@ html.write("""
       <div class="topnav">
          <div class="container">
             <a class="navbar-brand" href=index.html> Alexandre Vigny </a>
-            <a class="active" href=publi.html#full> Publications </a>
+            <a class="active" href=publi.html#types> Publications </a>
             <a class="navbar-brand" href=cv_vigny.pdf> CV </a>
          </div>
       </div>
