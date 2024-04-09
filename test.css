@@ -31,6 +31,17 @@ a:hover {
   color: red;
 }
 
+/* 
+a[href*="Papers"]:after { 
+  background-image: url('pdf.svg');
+  background-size: 1em;
+  background-repeat: no-repeat;
+  content: "        ";
+  width: 1em;
+  height: 1em;
+} 
+*/
+
 
 /* ----------------end general---------------- */
 

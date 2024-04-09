@@ -37,8 +37,8 @@ publi.append(DisPath)
 
 
 DistribDom =  { 
-   "link":"<a href=\"Papers/Distrib-domination-sparse-graph-classes_EJC-2023.pdf\"> Distributed domination on sparse graph classes.</a>",
-   "journal":"<a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0195669823000902\">European Journal of Combinatorics</a>",
+   "link":"<a href=\"Papers/Distrib-domination-sparse-graph-classes_EJC-2023.pdf\"> Distributed Domination on Sparse Graph Classes.</a>",
+   "journal":"<a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0195669823000902\">Eur. J. Comb</a>",
    "authors":"With "+ozan+", "+simeon+", "+patrice+" and "+sebi+".",
    "tag":"Distributed computing",
 }
@@ -69,7 +69,7 @@ publi.append(MCSepLogic)
 FoConnDef =  { 
    "link":"<a href=\"Papers/FO-Conn_Schirrmacher-Siebertz-Vigny_TOCL-2023.pdf\"> First-Order Logic with Connectivity Operators.</a>",
    "conf":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/15754/\"> CSL 2022</a>",
-   "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM ToCL</a>",
+   "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM Trans. Cpomput. Log</a>",
    "authors":"With "+nicoleSchi+" and "+sebi+".",
    "tag":"Separator Logic",
    "top":True
@@ -143,7 +143,7 @@ publi.append(SoloUpdate)
 EnumNoWD =  {    
    "link":"<a href=\"Papers/Schweikardt-Segoufin-Vigny_enum-fo-nowhere-dense_JACM_2022.pdf\"> Enumeration for FO Queries over Nowhere Dense Graphs.</a>",
    "authors":"With "+nicoleSchw+" and "+luc+".",
-   "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3517035\">J.ACM</a>",
+   "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3517035\">J. ACM</a>",
    "conf":"PODS 2018",
    "tag":"Query Enumeration",
    "top":True
@@ -172,7 +172,10 @@ def readmd (pub):
    if "conf" in pub and "journal" in pub:
       res+= " Presented at "+pub["conf"]+" and published in "+pub["journal"]+"."
    elif "journal" in pub:
-      res+= " Published in "+pub["journal"]+"."
+      if pub["journal"][-1]==".":
+         res+= " Published in "+pub["journal"]
+      else:
+         res+= " Published in "+pub["journal"]+"."
    elif "conf" in pub:
       res+= " Presented at "+pub["conf"]+"."
    else:
@@ -209,6 +212,7 @@ def readhtml (pub,type=""):
    # write coauthors if any
    if "authors" in pub:
       res+=pub["authors"]
+   
    # Write where it was presented
    if "conf" in pub and "journal" in pub:
       res+= " Presented at "+pub["conf"]+" and published in "+pub["journal"]+"."
