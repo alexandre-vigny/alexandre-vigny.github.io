@@ -29,8 +29,9 @@ publi = []
 
 # List of publi
 DisPath =  { 
-   "link":"<a href=\"https://doi.org/10.48550/arXiv.2302.07033\"> Model Checking Disjoint-Paths Logic on Topological-Minor-Free Graph Classes.</a>",
+   "link":"<a href=\"Papers/MC-disjoint-path_LICS-2024.pdf\"> Model Checking Disjoint-Paths Logic on Topological-Minor-Free Graph Classes.</a>",
    "authors":"With "+nicoleSchi+", "+sebi+", "+giannos+" and "+dimitrios+".",
+   "conf":"<a href=\"https://dl.acm.org/doi/10.1145/3661814.3662089\">LICS 2024</a>",
    "tag":"Separator Logic"
 }
 publi.append(DisPath)
@@ -80,15 +81,18 @@ publi.append(FoConnDef)
 LocalDomPla =  { 
    "link":"<a href=\"https://arxiv.org/abs/2111.14506\"> Local planar domination revisited.</a>",
    "authors":"With "+ozan+" and "+sebi+".",
-   "conf":"SIROCCO 2022",
+   "conf":"<a href=\"https://dl.acm.org/doi/abs/10.1007/978-3-031-09993-9_9\">SIROCCO 2022</a>",
    "tag":"Distributed computing"
 }
 publi.append(LocalDomPla)
 
-Discrepancy =  { 
-   "link":"<a href=\"https://arxiv.org/abs/2105.03693\"> Discrepancy and Sparsity.</a>",
+Discrepancy =  {
+   "link":"<a href=\"https://doi.org/10.1016/j.jctb.2024.06.001\"> Discrepancy and Sparsity.</a>",
+   # "arxiv":"<a href=\"https://arxiv.org/abs/2105.03693\"> Discrepancy and Sparsity.</a>",
    "authors":"With "+mario+", "+yiting+", "+patrice+" and "+sebi+".",
+   "journal":"<a href=\"https://doi.org/10.1016/j.jctb.2024.06.001\">J. Comb. Theory B</a>",
    "tag":"Graph Combinatorics",
+   "dateJournal":2024
 }
 publi.append(Discrepancy)
 
@@ -98,7 +102,7 @@ publi.append(Discrepancy)
 LocalDomBE =  { 
    "link":"<a href=\"https://arxiv.org/abs/2012.02701\"> Constant Round Distributed Domination on Graph Classes with Bounded Expansion.</a>",
    "authors":"With "+simeon+" and "+sebi+".",
-   "conf":"SIROCCO 2021",
+   "conf":"<a href=\"https://dl.acm.org/doi/abs/10.1007/978-3-030-79527-6_19\">SIROCCO 2021</a>",
    "tag":"Distributed computing"
 }
 publi.append(LocalDomBE)
@@ -115,13 +119,16 @@ publi.append(RecBack)
 
 
 ElimDist =  { 
-   "link":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2020/12755/\"> Elimination Distance to Bounded Degree on Planar Graphs.</a>",
+   "link":"<a href=\"https://arxiv.org/abs/2007.02413\"> Elimination Distance to Bounded Degree on Planar Graphs.</a>",
    "authors":"With "+alex+" and "+sebi+".",
-   "conf":"MFCS 2020",
-   "long":"<a href = \"https://arxiv.org/abs/2007.02413\"> Arxiv</a> long version.",
+   "conf":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2020/12755/\">MFCS 2020</a>",
+   # "long":"<a href = \"https://arxiv.org/abs/2007.02413\"> Arxiv</a> long version.",
+   "journal":"<a href=\"https://doi.org/10.3233/FI-242175\">Fundamenta Informaticae</a>",
    "video":" <a href= \"https://www.youtube.com/watch?v=oTKueyUsNwY\">Video presentation.</a>",
    "tag":"Graph Combinatorics",
-   "top":True
+   "top":True,
+   "dateConf":2020,
+   "dateJournal":2024
 }
 publi.append(ElimDist)
 
@@ -251,6 +258,7 @@ besthtml+="</ul>\n"
 
 
 # Writing the list of publi by apparition
+# TODO : Add uses of dates in publi
 app="# Publication by apparition\n"
 apphtml="""<div id="full" class="hidden">
                <h2>Publications by apparition</h2>
