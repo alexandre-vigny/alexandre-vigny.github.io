@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="shortcut icon" href="image.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="img/image.ico" type="image/x-icon">
   <title>Alexandre Vigny </title>
 
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="test.css" />
@@ -25,7 +25,7 @@
       <tr>
         <td>
           <div class="figure"> 
-            <img src="image.jpg" style="float: left; width:200px;">
+            <img src="img/image.jpg" style="float: left; width:200px;">
           </div>
         </td>
         <td>
