@@ -119,11 +119,12 @@ publi.append(RecBack)
 
 
 ElimDist =  { 
-   "link":"<a href=\"https://arxiv.org/abs/2007.02413\"> Elimination Distance to Bounded Degree on Planar Graphs.</a>",
+   "link":"<a href=\"https://fi.episciences.org/paper/view/id/13665\"> Elimination Distance to Bounded Degree on Planar Graphs.</a>",
    "authors":"With "+alex+" and "+sebi+".",
    "conf":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2020/12755/\">MFCS 2020</a>",
    # "long":"<a href = \"https://arxiv.org/abs/2007.02413\"> Arxiv</a> long version.",
-   "journal":"<a href=\"https://doi.org/10.3233/FI-242175\">Fundamenta Informaticae</a>",
+   "journal":"<a href=\"https://fi.episciences.org/paper/view/id/13665\">Fundamenta Informaticae</a>",
+   # "journal":"<a href=\"https://doi.org/10.3233/FI-242175\">Fundamenta Informaticae</a>",
    "video":" <a href= \"https://www.youtube.com/watch?v=oTKueyUsNwY\">Video presentation.</a>",
    "tag":"Graph Combinatorics",
    "top":True,
