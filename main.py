@@ -29,7 +29,7 @@ f.write("""
     <!-- end position -->
     <h2 id="stud"> Students</h2>
     <ul>
-        <li> """+jona+""" (with """+mamadou+"""). Since October 2024<br>
+        <li> """+jona+""", PhD student since October 2024, co-supervised with """+mamadou+""".<br>
           Subject : Reconfiguration problems on directed graphs.
         </li>
     </ul>
