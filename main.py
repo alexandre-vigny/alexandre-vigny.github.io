@@ -27,6 +27,13 @@ f.write("""
         <li> From May 2015 to September 2015: Internship in the LSV, at the ENS Cachan, with """+luc+""".</li>
     </ul>
     <!-- end position -->
+    <h2 id="stud"> Students</h2>
+    <ul>
+        <li> """+jona+""" (with """+mamadou+"""). Since October 2024<br>
+          Subject : Reconfiguration problems on directed graphs.
+        </li>
+    </ul>
+    <!-- end students -->
 
     <h2>Some links</h2>
     <ul>

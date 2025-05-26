@@ -1,25 +1,32 @@
-
+# advisors
 luc =       "<a href=http://pages.saclay.inria.fr/luc.segoufin/>Luc Segoufin</a>"
 arnaud =    "<a href=https://webusers.imj-prg.fr/~arnaud.durand/>Arnaud Durand</a>"
 mikolaj =   "<a href=https://www.mimuw.edu.pl/~bojan/>Mikołaj Bojańczyk</a>"
-sebi =      "<a href=https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz>Sebastian Siebertz</a>"
 szymon =    "<a href=https://www.mimuw.edu.pl/~szymtor/>Szymon Toruńczyk</a>"
+sebi =      "<a href=https://www.uni-bremen.de/en/theorie/team/profiles/prof-dr-sebastian-siebertz>Sebastian Siebertz</a>"
+
+# co-authors
 nicoleSchw= "<a href=https://www.informatik.hu-berlin.de/de/forschung/gebiete/loginf/thi/schweikardt/>Nicole Schweikardt</a>"
 michal=     "<a href=https://www.mimuw.edu.pl/~mp248287/>Michał Pilipczuk</a>"
-nicoleSchi= "<a href=https://www.uni-bremen.de/en/theorie/team>Nicole Schirrmacher</a>"
-mario =     "<a href=https://www.uni-bremen.de/en/theorie/team>Mario Grobler</a>"
 yiting=     "<a href=https://dblp.org/pid/234/5037.html>Yiting Jiang</a>"
 patrice=    "<a href=http://madezhi.free.fr/>Patrice Ossona de Mendez</a>"
-niko=       "<a href=https://user.informatik.uni-bremen.de/nikmaehl/>Nikolas Mählmann</a>"
-alex=       "<a href=https://www.uni-bremen.de/en/cslog/team/alexander-lindermayr>Alexander Lindermayr</a>"
-ozan=       "<a href=https://dblp.uni-trier.de/pid/307/5051.html>Ozan Heydt</a>"
-simeon=     "<a href=https://dblp.uni-trier.de/pid/280/3295.html>Simeon Kublenz</a>"
 giannos=    "<a href=https://www.lirmm.fr/~gstamoulis/>Giannos Stamoulis</a>"
 dimitrios=  "<a href=https://www.lirmm.fr/~thilikosto/>Dimitrios M. Thilikos</a>"
 jan=        "<a href=https://www.ac.tuwien.ac.at/people/dreier/>Jan Dreier</a>"
 amer=       "<a href=https://www.aub.edu.lb/pages/profile.aspx?MemberId=aa368>Amer E. Mouawad</a>"
 
+# Bremen
 teamBremen= "<a href=https://www.uni-bremen.de/en/theorie/team>team</a>"
+nicoleSchi= "<a href=https://www.uni-bremen.de/en/theorie/team>Nicole Schirrmacher</a>"
+mario =     "<a href=https://www.uni-bremen.de/en/theorie/team>Mario Grobler</a>"
+niko=       "<a href=https://user.informatik.uni-bremen.de/nikmaehl/>Nikolas Mählmann</a>"
+alex=       "<a href=https://www.uni-bremen.de/en/cslog/team/alexander-lindermayr>Alexander Lindermayr</a>"
+ozan=       "<a href=https://dblp.uni-trier.de/pid/307/5051.html>Ozan Heydt</a>"
+simeon=     "<a href=https://dblp.uni-trier.de/pid/280/3295.html>Simeon Kublenz</a>"
+
+# Clermont
+mamadou =   "<a href=https://perso.isima.fr/~makante/>Mamadou Kanté</a>"
+jona =      "Jona Dirks"
 
 # TODO
 #nothing !
@@ -28,11 +35,43 @@ teamBremen= "<a href=https://www.uni-bremen.de/en/theorie/team>team</a>"
 publi = []
 
 # List of publi
+
+EDDC={
+   "link":"<a href=\"https://arxiv.org/abs/2504.21675\"> Elimination Distance to Dominated Clusters.</a>",
+   "authors":"With "+nicoleSchi+" and "+sebi+".",
+   "tag":"Graph Combinatorics"
+}
+publi.append(EDDC)
+
+
+
+IsRecDAGs={
+   "link":"<a href=\"https://arxiv.org/abs/2504.10671\"> Token Sliding Reconfiguration on DAGs.</a>",
+   "authors":"With "+jona+".",
+   "tag":"Graph Combinatorics"
+}
+publi.append(IsRecDAGs)
+
+#    "link":"<a href=\"https://arxiv.org/abs/1903.00505\"> Parameterized Distributed Complexity Theory: A logical approach.</a>",
+#    "authors":"With "+sebi+".",
+#    "tag":"Distributed computing"
+# }
+# publi.append(ParaDistrib)
+
+
+FsttcsSurvey ={
+   "link":"<a href=\"https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.FSTTCS.2024.2\"> Advances in Algorithmic Meta Theorems.</a> (Invited Paper)",
+   "authors":"With "+sebi+".",
+   "conf":"FSTTCS 2024",
+   "tag":"Graphs and Logic"
+}
+publi.append(FsttcsSurvey)
+
 DisPath =  { 
    "link":"<a href=\"Papers/MC-disjoint-path_LICS-2024.pdf\"> Model Checking Disjoint-Paths Logic on Topological-Minor-Free Graph Classes.</a>",
    "authors":"With "+nicoleSchi+", "+sebi+", "+giannos+" and "+dimitrios+".",
    "conf":"<a href=\"https://dl.acm.org/doi/10.1145/3661814.3662089\">LICS 2024</a>",
-   "tag":"Separator Logic"
+   "tag":"Graphs and Logic"
 }
 publi.append(DisPath)
 
@@ -60,7 +99,7 @@ MCSepLogic =  {
    "link":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/16443/\"> Algorithms and data structures for first-order logic with connectivity under vertex failures.</a>",
    "authors":"With "+michal+", "+nicoleSchi+", "+sebi+" and "+szymon+".",
    "conf":"ICALP 2022",
-   "tag":"Separator Logic",
+   "tag":"Graphs and Logic",
    "top":True
 }
 publi.append(MCSepLogic)
@@ -72,7 +111,7 @@ FoConnDef =  {
    "conf":"<a href=\"https://drops.dagstuhl.de/opus/volltexte/2022/15754/\"> CSL 2022</a>",
    "journal":"<a href=\"https://dl.acm.org/doi/abs/10.1145/3595922\">ACM Trans. Cpomput. Log</a>",
    "authors":"With "+nicoleSchi+" and "+sebi+".",
-   "tag":"Separator Logic",
+   "tag":"Graphs and Logic",
    "top":True
 }
 publi.append(FoConnDef)
@@ -275,7 +314,7 @@ apphtml+="</ul></div>\n"
 # Writing the list of publi on topics
 top="# Publication by topics\n"
 tophtml="<h2>Publication by topics</h2>\n"
-for x in ["Separator Logic","Graph Combinatorics", "Distributed computing", "Query Enumeration"]:
+for x in ["Graphs and Logic","Graph Combinatorics", "Distributed computing", "Query Enumeration"]:
    top+="\n ## "+x+"\n"
    # tophtml+="\t<h3>"+x+"</h3>\n\t<ul>\n"
    tophtml+="<h3>"+x+"""</h3>\n 
@@ -299,7 +338,7 @@ for x in ["Separator Logic","Graph Combinatorics", "Distributed computing", "Que
 # newTop=""" <div><input type="checkbox" id="1"style="display:none;"> 
 newTop="""  <div id="topics" class = "hidden">
                <h2>Publications by Topics</h2>\n"""
-for x in ["Separator Logic","Graph Combinatorics", "Distributed computing", "Query Enumeration"]:
+for x in ["Graphs and Logic","Graph Combinatorics", "Distributed computing", "Query Enumeration"]:
    newTop+="<h3>"+x+"""</h3>\n
                <ul class = publi>\n"""
    for pub in publi:
