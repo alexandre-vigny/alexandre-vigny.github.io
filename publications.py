@@ -10,7 +10,7 @@ nicoleSchw= "<a href=https://www.informatik.hu-berlin.de/de/forschung/gebiete/lo
 michal=     "<a href=https://www.mimuw.edu.pl/~mp248287/>Michał Pilipczuk</a>"
 yiting=     "<a href=https://dblp.org/pid/234/5037.html>Yiting Jiang</a>"
 patrice=    "<a href=http://madezhi.free.fr/>Patrice Ossona de Mendez</a>"
-giannos=    "<a href=https://www.lirmm.fr/~gstamoulis/>Giannos Stamoulis</a>"
+giannos=    "<a href=https://www.irif.fr/~stamoulis/>Giannos Stamoulis</a>"
 dimitrios=  "<a href=https://www.lirmm.fr/~thilikosto/>Dimitrios M. Thilikos</a>"
 jan=        "<a href=https://www.ac.tuwien.ac.at/people/dreier/>Jan Dreier</a>"
 amer=       "<a href=https://www.aub.edu.lb/pages/profile.aspx?MemberId=aa368>Amer E. Mouawad</a>"
@@ -26,7 +26,12 @@ simeon=     "<a href=https://dblp.uni-trier.de/pid/280/3295.html>Simeon Kublenz<
 
 # Clermont
 mamadou =   "<a href=https://perso.isima.fr/~makante/>Mamadou Kanté</a>"
-jona =      "Jona Dirks"
+jona =      "<a href=https://dblp.uni-trier.de/pid/306/8260.html>Jona Dirks</a>"
+
+# JGA
+SHumeau = "<a href=https://perso.ens-lyon.fr/samuel.humeau/>Samuel Humeau</a>"
+DanielMock = "<a href=https://tcs.rwth-aachen.de/users/mock/>Daniel Mock</a>"
+Timothe= "<a href=https://www.timothepicavet.fr/>Timothé Picavet</a>"
 
 # TODO
 #nothing !
@@ -36,9 +41,35 @@ publi = []
 
 # List of publi
 
+
+hardDomSetRec={
+   "link":"<a href=\"https://arxiv.org/abs/2507.11446\"> Lower bounds for dominating set reconfiguration on sparse (directed) graphs.</a>",
+   "authors":"With "+jona+".",
+   "tag":"Graph Combinatorics"
+}
+publi.append(hardDomSetRec)
+
+hardTD={
+   "link":"<a href=\"https://arxiv.org/abs/2510.18584\"> Weighted Treedepth is NP-complete on Graphs of Bounded Degree.</a>",
+   "authors":"With "+jona+", "+nicoleSchi+", and "+sebi+".",
+   "tag":"Graph Combinatorics"
+}
+publi.append(hardTD)
+
+testingBE={
+   "link":"<a href=\"https://arxiv.org/abs/2511.10230\"> Testing H-freeness on sparse graphs, the case of bounded expansion.</a>",
+   "authors":"With "+SHumeau+", "+mamadou+", "+DanielMock+", and "+Timothe+".",
+   "conf":"STACS 2026",
+   "tag":"Graph Combinatorics"
+}
+publi.append(testingBE)
+
+
+
 EDDC={
-   "link":"<a href=\"https://arxiv.org/abs/2504.21675\"> Elimination Distance to Dominated Clusters.</a>",
+   "link":"<a href=\"https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.MFCS.2025.90\"> Elimination Distance to Dominated Clusters.</a>",
    "authors":"With "+nicoleSchi+" and "+sebi+".",
+   "conf":"MFCS 2025",
    "tag":"Graph Combinatorics"
 }
 publi.append(EDDC)
@@ -46,8 +77,9 @@ publi.append(EDDC)
 
 
 IsRecDAGs={
-   "link":"<a href=\"https://arxiv.org/abs/2504.10671\"> Token Sliding Reconfiguration on DAGs.</a>",
+   "link":"<a href=\"https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.MFCS.2025.41\"> Token Sliding Reconfiguration on DAGs.</a>",
    "authors":"With "+jona+".",
+   "conf":"MFCS 2025",
    "tag":"Graph Combinatorics"
 }
 publi.append(IsRecDAGs)

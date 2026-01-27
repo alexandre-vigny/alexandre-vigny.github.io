@@ -37,8 +37,8 @@ f.write("""
 
     <h2>Some links</h2>
     <ul>
-        <!-- <li><b>Open PhD position, more information <a href="these-2024.pdf">here</a>.</b></li>
-        -->
+        <li><b>Open position, PhD / Master internship with <a href="https://vbarra.github.io/">Vincent Barra</a>. Information <a href="sujet-these-BARRA-VIGNY-LIMOS.pdf">here</a>.</b></li>
+        
         <li> Theoretical Computer Scientists for Future
         <a href="https://tcs4f.org">
         <img width="80" src="https://tcs4f.org/themes/tcs4f/img/brilliant_tcs_4future.png" alt="TCS 4 Future brillant button">
